@@ -2,7 +2,7 @@
   "name": "levelup-gui",
   "description": "",
   "version": "0.1.0",
-  "main": "index.coffee",
+  "main": "index.js",
   "dependencies": {
     "express": "~3",
     "ws": "~0.4.25",
