@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/base.css" />
+    <link rel="stylesheet" href="styles/app.css" />
+</head>
+<body>
+
+    <nav class="top-bar">
+        <ul class="title-area">
+            <li class="name">
+                <h1><a href="#">LevelDB</a></h1>
+            </li>
+            <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+        </ul>
+
+        <section class="top-bar-section">
+            <!-- Right Nav Section -->
+            <ul class="right">
+                <li class="divider"></li>
+                <!-- <li><a href="#">Main Item 1</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Main Item 2</a></li>
+                <li class="divider"></li>
+                <li class="has-dropdown">
+                    <a href="#">Main Item 3</a>
+                    <ul class="dropdown"><li class="title back js-generated"><h5><a href="#">« Back</a></h5></li>
+                        <li><a href="#">Dropdown Option</a></li>
+                        <li><a href="#">Dropdown Option</a></li>
+                        <li><a href="#">Dropdown Option</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">See all →</a></li>
+                    </ul>
+                </li> -->
+            </ul>
+        </section>
+    </nav>
+
+    <div class="row">
+        <div class="large-12 columns">
+            <form>
+                <fieldset id="query">
+                    <legend>Query</legend>
+                    <div class="row collapse">
+                        <div class="small-3 large-2 columns">
+                            <span class="prefix">Command:</span>
+                        </div>
+                        <div class="small-7 large-9 columns command">
+                            <input type="text" placeholder="db.createReadStream({ limit: 10, reverse: true })" />
+                            <div class="presets">
+                                <a href="#" data-dropdown="presets" class="tiny button dropdown">Presets</a>
+                            </div>
+                        </div>
+                        <div class="small-2 large-1 columns">
+                            <button class="button prefix run">Run</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <ul id="presets" class="f-dropdown">
+            <li><a href="#">db.createReadStream()</a></li>
+            <li><a href="#">db.createKeyStream()</a></li>
+            <li><a href="#">db.createValueStream()</a></li>
+        </ul>
+    </div>
+
+    <div class="row">
+        <div class="large-12 columns">
+            <table class="large-12 columns" id="results">
+                <thead>
+                    <tr>
+                        <th width="40%">Key</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <script id="row-template" type="text/template">
+                        <td class="key">{{=key}}</td>
+                        <td class="value">{{=value}}</td>
+                    </script>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer class="row">
+        <div class="large-12 columns">
+            <hr>
+            <div class="row">
+                <div class="large-6 columns">
+                    <p><a href="http://github.com/ricardobeat/levelup-gui">LevelUp GUI on Github</a></p>
+                </div>
+                <!-- <div class="large-6 columns">
+                    <ul class="inline-list right">
+                        <li><a href="#">Link 1</a></li>
+                        <li><a href="#">Link 2</a></li>
+                        <li><a href="#">Link 3</a></li>
+                        <li><a href="#">Link 4</a></li>
+                    </ul>
+                </div> -->
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/vendor.js"></script>
+    <script src="scripts/app.js"></script>
+    <script>
+        $(document).foundation()
+        app.init()
+    </script>
+</body>
+</html>

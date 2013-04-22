@@ -1,0 +1,4 @@
+--require assert
+--ui bdd
+--compilers coffee:coffee-script
+--reporter spec
