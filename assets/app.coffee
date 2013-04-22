@@ -80,7 +80,11 @@ Notification = Backbone.View.extend
 # -----------------------------------------------------------------------------
 
 Row = Backbone.Model.extend
-    url: ''
+    initialize: ->
+        value = this.get('value')
+        this.set('key', JSON.stringify this.get('key'))
+        this.set('value', JSON.stringify value, null, 2)
+        this.set('short', JSON.stringify value)
 
 Results = Backbone.Collection.extend
     model: Row
@@ -94,12 +98,16 @@ RowView = Backbone.View.extend
         this.short = !this.short
         @render()
     render: ->
-        key   = _.escape JSON.stringify this.model.get('key')
-        value = _.escape JSON.stringify this.model.get('value')
+        key   = this.model.get('key')
+        value = this.model.get('value')
+        short = this.model.get('short')
         if !@short
-            if key?.length > 60 then key = key.slice(0, 60) + '...'
-            if value?.length > 90 then value = value.slice(0, 90) + '...'
-        @renderTemplate { key, value }
+            if key?.length > 45 then key = key.slice(0, 45) + '...'
+            if value?.length > 70 then value = short.slice(0, 70) + '...'
+        @renderTemplate {
+            key   : _.escape key
+            value : _.escape value
+        }
 
 ResultsView = Backbone.View.extend
     el: '#results tbody'

@@ -23,10 +23,12 @@ app.get '/', (req, res) ->
 
 # -----------------------------------------------------------------------------
 
+log = (args...) -> console.log '[LevelDB] ' + args.join(' ')
+
 GUI =
     level: null
     WSSetup: (@ws) ->
-        console.log "Client connected"
+        log "Client connected"
         @send = (message) => @ws.send JSON.stringify message
         ws.on 'message', @socketAPI.bind(this)
 
@@ -34,7 +36,7 @@ GUI =
         return unless try data = JSON.parse data
         { method, args } = data
 
-        console.log "[levelup] #{method} [#{args}]"
+        log "#{method} [#{args}]"
 
         if method is 'get'
             args.push (error, results) => @send { error, results }
@@ -68,7 +70,7 @@ GUI =
         wss = new WServer { server }
         wss.on 'connection', @WSSetup.bind(this)
 
-        console.log "LevelDB-GUI server listening on port #{port}"
+        log "Server listening on port #{port}"
 
     # set levelup instance
     use: (db) ->

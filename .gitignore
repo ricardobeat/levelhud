@@ -19,5 +19,6 @@ thumbs.db
 
 *.sublime-workspace
 
+index.js
 public/scripts/*.js
 public/styles/*.css

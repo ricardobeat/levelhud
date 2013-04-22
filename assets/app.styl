@@ -1,6 +1,9 @@
 body
     color: #333
 
+pre, code
+    font-family: "Monaco", monospace
+
 #query
     .command
         position: relative
@@ -13,9 +16,10 @@ body
     tr:hover
         td { background: rgba(250,250,200,0.4) }
     td
-        font-family: "Monaco", monospace
         font-size: 12px
         padding: 5px 10px
+        vertical-align: top
+        text-overflow: ellipsis
     .key
         color: #334
     .value
