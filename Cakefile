@@ -26,6 +26,8 @@ task 'build', ->
         'assets/app.styl'
     ], 'public/styles/app.css'
 
+    compile 'index.coffee', 'index.js'
+
 task 'watch', ->
     invoke 'build'
     watch 'assets/*', -> invoke 'build'
