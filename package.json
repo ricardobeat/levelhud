@@ -15,7 +15,7 @@
   },
   "scripts": {
     "test": "mocha",
-    "prepublish": "cake build && coffee -c index.coffee"
+    "prepublish": "cake build"
   },
   "repository": {
     "type": "git",
