@@ -5,7 +5,7 @@ A front-end for exploring LevelDB stores. Uses websockets to stream data to the 
 
     npm install levelhud
 
-Requires [levelup](http://github.com/rvagg/levelup). Since only one connection to LevelDB can be open at a time, 
+Requires [levelup](http://github.com/rvagg/node-levelup). Since only one connection to LevelDB can be open at a time, 
 the LeveHUD server must be started from within your app to share the client instance:
 
     var levelup  = require('levelup')
