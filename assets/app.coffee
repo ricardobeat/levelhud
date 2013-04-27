@@ -18,12 +18,15 @@ request = (method, args...) ->
 for method in methods
     db[method] = request.bind null, method
 
+reconnect = 0
 do connect = ->
+    ws?.close()
     ws = new WebSocket "ws://#{window.location.host}"
     ws._send = ws.send
     ws.send = (message) -> ws._send JSON.stringify message
 
     ws.onopen = ->
+        clearTimeout reconnect
         new Notification().render("Connection established")
 
     ws.onmessage = (res) ->
@@ -31,11 +34,12 @@ do connect = ->
         if data.message
             new Notification().render(data.message)
         if data.key or data.value
+            console.log data
             app.results.add data
 
     ws.onclose = ->
         new Notification({ error: true }).render("Connection lost")
-        setTimeout connect, 1000 * 5
+        reconnect = setTimeout connect, 1000 * 5
 
 # -----------------------------------------------------------------------------
 
