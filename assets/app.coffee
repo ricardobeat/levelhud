@@ -67,10 +67,10 @@ QueryView = Backbone.View.extend
             self.closest('.f-dropdown').removeAttr('style').removeClass('open')
 
     checkReturn: (e) ->
-        if e.keyCode is 13 then @submitQuery()
+        if e.keyCode is 13 then @submitQuery(e)
 
     submitQuery: (e) ->
-        e?.preventDefault()
+        e.preventDefault()
         q = @$el.find('.command input').val()
         unless q.indexOf('db.') is 0
             new Notification({ error: true }).render("Invalid command.")
