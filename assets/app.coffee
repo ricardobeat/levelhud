@@ -66,7 +66,7 @@ QueryView = Backbone.View.extend
         if e.keyCode is 13 then @submitQuery()
 
     submitQuery: (e) ->
-        e.preventDefault()
+        e?.preventDefault()
         q = @$el.find('.command input').val()
         unless q.indexOf('db.') is 0
             new Notification({ error: true }).render("Invalid command.")
