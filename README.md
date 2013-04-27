@@ -1,12 +1,12 @@
-LevelUp GUI
-===========
+LevelHUD
+========
 
-A front-end for exploring data stored in LevelDB. Uses websockets to stream data to the browser on the fly.
+A front-end for exploring LevelDB stores. Uses websockets to stream data to the browser on the fly.
 
-    npm install levelup-gui
+    npm install levelhud
 
 Requires [levelup](http://github.com/rvagg/levelup). Since only one connection to LevelDB can be open at a time, 
-the GUI must be started from within your app so that it can share the `levelup` instance:
+the LeveHUD server must be started from within your app to share the client instance:
 
     var levelup  = require('levelup')
       , levelgui = require('levelup-gui')
@@ -26,3 +26,8 @@ Point your browser to `localhost:4420`. That is all.
     new levelgui(unicorns).listen(4421)
 
 ![screenshot](http://f.cl.ly/items/1i253S0n3o3C0C0T3M3R/Image%202013.04.22%205%3A48%3A40%20PM.png)
+
+License
+-------
+
+http://ricardo.mit-license.org
