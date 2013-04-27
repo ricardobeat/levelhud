@@ -1,8 +1,5 @@
 db = window.db = {}
-
-ws = new WebSocket "ws://#{window.location.host}"
-ws._send = ws.send
-ws.send = (message) -> ws._send JSON.stringify message
+ws = null
 
 methods = [
     'get'
@@ -21,12 +18,24 @@ request = (method, args...) ->
 for method in methods
     db[method] = request.bind null, method
 
-ws.onmessage = (res) ->
-    return unless try data = JSON.parse res.data
-    if data.message
-        new Notification().render(data.message)
-    if data.key or data.value
-        app.results.add data
+do connect = ->
+    ws = new WebSocket "ws://#{window.location.host}"
+    ws._send = ws.send
+    ws.send = (message) -> ws._send JSON.stringify message
+
+    ws.onopen = ->
+        new Notification().render("Connection established")
+
+    ws.onmessage = (res) ->
+        return unless try data = JSON.parse res.data
+        if data.message
+            new Notification().render(data.message)
+        if data.key or data.value
+            app.results.add data
+
+    ws.onclose = ->
+        new Notification({ error: true }).render("Connection lost")
+        setTimeout connect, 1000 * 5
 
 # -----------------------------------------------------------------------------
 
