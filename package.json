@@ -1,7 +1,7 @@
 {
   "name": "levelhud",
   "description": "LevelDB web-based front-end",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "main": "index.js",
   "dependencies": {
     "express": "~3",
