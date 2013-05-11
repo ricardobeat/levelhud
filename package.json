@@ -19,8 +19,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/ricardobeat/project.git"
+    "url": "git://github.com/ricardobeat/levelhud.git"
   },
   "author": "Ricardo Tomasi",
-  "license": "MIT (ricardo.mit-license.org)"
+  "license": "MIT"
 }
